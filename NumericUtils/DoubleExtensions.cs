@@ -22,7 +22,8 @@ namespace NumericUtils
                 number = -number;
             }
 
-            int exponent = GetDoublesExponent(number, out double fraction);
+            int exponent = GetDoublesExponent(number);
+            double fraction = GetDoublesFraction(number, exponent);
 
             stringBuilder.Append(GetExponentBinaryRepresentation(exponent));
             stringBuilder.Append(GetFractionBinaryRepresentation(fraction));
@@ -97,17 +98,25 @@ namespace NumericUtils
             return new string(bits);
         }
 
-        private static int GetDoublesExponent(double number, out double fraction)
+        private static int GetDoublesExponent(double number)
         {
             if (double.IsNaN(number))
             {
-                fraction = 1;
-                return (int)Math.Pow(2, EXPONENT_BIT_LENGTH) - 1;
+                return 1;
             }
 
+            int power = GetNormalExponent(number);
+
+            power = power < 0 ? 0 : power;
+
+            return power;
+        }
+
+        private static int GetNormalExponent(double number)
+        {
             int power = 0;
-            
-            fraction = number / Math.Pow(2, power) - 1;
+
+            double fraction = number / Math.Pow(2, power) - 1;
 
             while (fraction < 0 || fraction >= 1)
             {
@@ -117,18 +126,27 @@ namespace NumericUtils
 
             power += EXPONENT_BIAS;
 
-            if (power <= 0)
+            return power;
+        }
+
+        private static double GetDoublesFraction(double number, int exponent)
+        {
+            double fraction;
+
+            exponent -= EXPONENT_BIAS;
+
+            if (exponent <= -EXPONENT_BIAS)
             {
-                power = 0;
                 fraction = number / Math.Pow(2, SUBNORMAL_EXPONENT);
             }
-
-            if (double.IsNaN(fraction))
+            else
             {
-                fraction = 0;
+                fraction = number / Math.Pow(2, exponent) - 1;
             }
 
-            return power;
+            fraction = double.IsNaN(fraction) ? 0 : fraction;
+
+            return fraction;
         }
 
         private static bool IsNegativeZero(double x)
