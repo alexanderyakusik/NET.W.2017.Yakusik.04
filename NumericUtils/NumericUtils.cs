@@ -7,34 +7,34 @@ namespace NumericUtils
     public static class NumericUtils
     {
         /// <summary>
-        /// Find greatest common divisor of <paramref name="num1"/> and <paramref name="num2"/> using
+        /// Find greatest common divisor of <paramref name="first"/> and <paramref name="second"/> using
         /// classic Euclidean algorithm
         /// </summary>
-        /// <param name="num1">First number</param>
-        /// <param name="num2">Second number</param>
+        /// <param name="first">First number</param>
+        /// <param name="second">Second number</param>
         /// <returns>Greatest common divisor of two values</returns>
         /// <exception cref="ArgumentException">All the values are zero</exception>
-        public static int EuclidGCD(int num1, int num2)
+        public static int EuclidGCD(int first, int second)
         {
-            ValidateZeroValues(num1, num2);
+            ValidateZeroValues(first, second);
 
-            return EuclidGCDValidNumbers(num1, num2);
+            return EuclidGCDValidNumbers(first, second);
         }
 
         /// <summary>
-        /// Find greatest common divisor of <paramref name="num1"/> and <paramref name="num2"/> using
+        /// Find greatest common divisor of <paramref name="first"/> and <paramref name="second"/> using
         /// classic Euclidean algorithm. Also counts method execution time in milliseconds
         /// </summary>
-        /// <param name="num1">First number</param>
-        /// <param name="num2">Second number</param>
+        /// <param name="first">First number</param>
+        /// <param name="second">Second number</param>
         /// <param name="methodExecutionMilliseconds">Method execution time in milliseconds</param>
         /// <returns>Greatest common divisor of two values</returns>
         /// <exception cref="ArgumentException">All the values are zero</exception>
-        public static int EuclidGCD(int num1, int num2, out long methodExecutionMilliseconds)
+        public static int EuclidGCD(int first, int second, out long methodExecutionMilliseconds)
         {
             var stopwatch = new Stopwatch();
             stopwatch.Start();
-            int result = EuclidGCD(num1, num2);
+            int result = EuclidGCD(first, second);
             stopwatch.Stop();
 
             methodExecutionMilliseconds = stopwatch.ElapsedMilliseconds;
@@ -43,36 +43,36 @@ namespace NumericUtils
         }
 
         /// <summary>
-        /// Find greatest common divisor of <paramref name="num1"/>, <paramref name="num2"/> and <paramref name="num3"/>
+        /// Find greatest common divisor of <paramref name="first"/>, <paramref name="second"/> and <paramref name="third"/>
         /// using classic Euclidean algorithm
         /// </summary>
-        /// <param name="num1">First number</param>
-        /// <param name="num2">Second number</param>
-        /// <param name="num3">Third number</param>
+        /// <param name="first">First number</param>
+        /// <param name="second">Second number</param>
+        /// <param name="third">Third number</param>
         /// <returns>Greatest common divisor of three values</returns>
         /// <exception cref="ArgumentException">All the values are zero</exception>
-        public static int EuclidGCD(int num1, int num2, int num3)
+        public static int EuclidGCD(int first, int second, int third)
         {
-            ValidateZeroValues(num1, num2, num3);
+            ValidateZeroValues(first, second, third);
 
-            return EuclidGCDValidNumbers(EuclidGCDValidNumbers(num1, num2), num3);
+            return EuclidGCDValidNumbers(EuclidGCDValidNumbers(first, second), third);
         }
 
         /// <summary>
-        /// Find greatest common divisor of <paramref name="num1"/>, <paramref name="num2"/> and <paramref name="num3"/>
+        /// Find greatest common divisor of <paramref name="first"/>, <paramref name="second"/> and <paramref name="third"/>
         /// using classic Euclidean algorithm. Also counts method execution time in milliseconds
         /// </summary>
-        /// <param name="num1">First number</param>
-        /// <param name="num2">Second number</param>
-        /// <param name="num3">Third number</param>
+        /// <param name="first">First number</param>
+        /// <param name="second">Second number</param>
+        /// <param name="third">Third number</param>
         /// <param name="methodExecutionMilliseconds">Method execution time in milliseconds</param>
         /// <returns>Greatest common divisor of three values</returns>
         /// <exception cref="ArgumentException">All the values are zero</exception>
-        public static int EuclidGCD(int num1, int num2, int num3, out long methodExecutionMilliseconds)
+        public static int EuclidGCD(int first, int second, int third, out long methodExecutionMilliseconds)
         {
             var stopwatch = new Stopwatch();
             stopwatch.Start();
-            int result = EuclidGCD(num1, num2, num3);
+            int result = EuclidGCD(first, second, third);
             stopwatch.Stop();
 
             methodExecutionMilliseconds = stopwatch.ElapsedMilliseconds;
@@ -93,7 +93,7 @@ namespace NumericUtils
             ValidateArrayLength(numbers);
             ValidateZeroValues(numbers);
 
-            return numbers.Aggregate((num1, num2) => EuclidGCDValidNumbers(num1, num2));
+            return numbers.Aggregate((first, second) => EuclidGCDValidNumbers(first, second));
         }
 
         /// <summary>
@@ -118,34 +118,34 @@ namespace NumericUtils
         }
 
         /// <summary>
-        /// Find greatest common divisor of <paramref name="num1"/> and <paramref name="num2"/> using
+        /// Find greatest common divisor of <paramref name="first"/> and <paramref name="second"/> using
         /// Stein (or binary Euclidean) algorithm
         /// </summary>
-        /// <param name="num1">First number</param>
-        /// <param name="num2">Second number</param>
+        /// <param name="first">First number</param>
+        /// <param name="second">Second number</param>
         /// <returns>Greatest common divisor of two values</returns>
         /// <exception cref="ArgumentException">All the values are zero</exception>
-        public static int SteinGCD(int num1, int num2)
+        public static int SteinGCD(int first, int second)
         {
-            ValidateZeroValues(num1, num2);
+            ValidateZeroValues(first, second);
 
-            return SteinGCDValidNumbers(num1, num2);
+            return SteinGCDValidNumbers(first, second);
         }
 
         /// <summary>
-        /// Find greatest common divisor of <paramref name="num1"/> and <paramref name="num2"/> using
+        /// Find greatest common divisor of <paramref name="first"/> and <paramref name="second"/> using
         /// Stein (or binary Euclidean) algorithm. Also counts method execution time in milliseconds
         /// </summary>
-        /// <param name="num1">First number</param>
-        /// <param name="num2">Second number</param>
+        /// <param name="first">First number</param>
+        /// <param name="second">Second number</param>
         /// <param name="methodExecutionMilliseconds">Method execution time in milliseconds</param>
         /// <returns>Greatest common divisor of two values</returns>
         /// <exception cref="ArgumentException">All the values are zero</exception>
-        public static int SteinGCD(int num1, int num2, out long methodExecutionMilliseconds)
+        public static int SteinGCD(int first, int second, out long methodExecutionMilliseconds)
         {
             var stopwatch = new Stopwatch();
             stopwatch.Start();
-            int result = SteinGCD(num1, num2);
+            int result = SteinGCD(first, second);
             stopwatch.Stop();
 
             methodExecutionMilliseconds = stopwatch.ElapsedMilliseconds;
@@ -154,36 +154,36 @@ namespace NumericUtils
         }
 
         /// <summary>
-        /// Find greatest common divisor of <paramref name="num1"/>, <paramref name="num2"/> and <paramref name="num3"/>
+        /// Find greatest common divisor of <paramref name="first"/>, <paramref name="second"/> and <paramref name="third"/>
         /// using Stein (or binary Euclidean) algorithm
         /// </summary>
-        /// <param name="num1">First number</param>
-        /// <param name="num2">Second number</param>
-        /// <param name="num3">Third number</param>
+        /// <param name="first">First number</param>
+        /// <param name="second">Second number</param>
+        /// <param name="third">Third number</param>
         /// <returns>Greatest common divisor of three values</returns>
         /// <exception cref="ArgumentException">All the values are zero</exception>
-        public static int SteinGCD(int num1, int num2, int num3)
+        public static int SteinGCD(int first, int second, int third)
         {
-            ValidateZeroValues(num1, num2, num3);
+            ValidateZeroValues(first, second, third);
 
-            return SteinGCDValidNumbers(SteinGCDValidNumbers(num1, num2), num3);
+            return SteinGCDValidNumbers(SteinGCDValidNumbers(first, second), third);
         }
 
         /// <summary>
-        /// Find greatest common divisor of <paramref name="num1"/>, <paramref name="num2"/> and <paramref name="num3"/>
+        /// Find greatest common divisor of <paramref name="first"/>, <paramref name="second"/> and <paramref name="third"/>
         /// using Stein (or binary Euclidean) algorithm. Also counts method execution time in milliseconds
         /// </summary>
-        /// <param name="num1">First number</param>
-        /// <param name="num2">Second number</param>
-        /// <param name="num3">Third number</param>
+        /// <param name="first">First number</param>
+        /// <param name="second">Second number</param>
+        /// <param name="third">Third number</param>
         /// <param name="methodExecutionMilliseconds">Method execution time in milliseconds</param>
         /// <returns>Greatest common divisor of three values</returns>
         /// <exception cref="ArgumentException">All the values are zero</exception>
-        public static int SteinGCD(int num1, int num2, int num3, out long methodExecutionMilliseconds)
+        public static int SteinGCD(int first, int second, int third, out long methodExecutionMilliseconds)
         {
             var stopwatch = new Stopwatch();
             stopwatch.Start();
-            int result = SteinGCD(num1, num2, num3);
+            int result = SteinGCD(first, second, third);
             stopwatch.Stop();
 
             methodExecutionMilliseconds = stopwatch.ElapsedMilliseconds;
@@ -204,7 +204,7 @@ namespace NumericUtils
             ValidateArrayLength(numbers);
             ValidateZeroValues(numbers);
 
-            return numbers.Aggregate((num1, num2) => SteinGCDValidNumbers(num1, num2));
+            return numbers.Aggregate((first, second) => SteinGCDValidNumbers(first, second));
         }
 
         /// <summary>
@@ -230,70 +230,70 @@ namespace NumericUtils
 
         #region Private methods
 
-        private static int EuclidGCDValidNumbers(int num1, int num2)
+        private static int EuclidGCDValidNumbers(int first, int second)
         {
-            num1 = num1 < 0 ? -num1 : num1;
-            num2 = num2 < 0 ? -num2 : num2;
+            first = first < 0 ? -first : first;
+            second = second < 0 ? -second : second;
 
-            if (num1 == 0)
+            if (first == 0)
             {
-                return num2;
+                return second;
             }
 
-            if (num2 == 0)
+            if (second == 0)
             {
-                return num1;
+                return first;
             }
 
-            while (num1 != num2)
+            while (first != second)
             {
-                if (num1 > num2)
+                if (first > second)
                 {
-                    num1 -= num2;
+                    first -= second;
                 }
                 else
                 {
-                    num2 -= num1;
+                    second -= first;
                 }
             }
 
-            return num1;
+            return first;
         }
 
-        private static int SteinGCDValidNumbers(int num1, int num2)
+        private static int SteinGCDValidNumbers(int first, int second)
         {
-            num1 = num1 < 0 ? -num1 : num1;
-            num2 = num2 < 0 ? -num2 : num2;
+            first = first < 0 ? -first : first;
+            second = second < 0 ? -second : second;
 
-            if (num1 == 0)
+            if (first == 0)
             {
-                return num2;
+                return second;
             }
 
-            if (num2 == 0)
+            if (second == 0)
             {
-                return num1;
+                return first;
             }
 
             int shift;
-            for (shift = 0; ((num1 | num2) & 1) == 0; shift++)
+            for (shift = 0; ((first | second) & 1) == 0; shift++)
             {
-                num1 >>= 1;
-                num2 >>= 1;
+                first >>= 1;
+                second >>= 1;
             }
 
-            while ((num1 & 1) == 0) num1 >>= 1;
+            while ((first & 1) == 0) first >>= 1;
             do
             {
-                while ((num2 & 1) == 0) num2 >>= 1;
-                if (num1 > num2)
+                while ((second & 1) == 0) second >>= 1;
+                if (first > second)
                 {
-                    Swap(ref num1, ref num2);
+                    Swap(ref first, ref second);
                 }
-                num2 -= num1;
-            } while (num2 != 0);
+                second -= first;
+            } while (second != 0);
 
-            return num1 << shift;
+            return first << shift;
         }
 
         private static void ValidateArrayLength(int[] numbers)
@@ -304,17 +304,17 @@ namespace NumericUtils
             }
         }
 
-        private static void ValidateZeroValues(int num1, int num2)
+        private static void ValidateZeroValues(int first, int second)
         {
-            if (num1 == 0 && num2 == 0)
+            if (first == 0 && second == 0)
             {
                 throw new ArgumentException("All the values cannot be zero.");
             }
         }
 
-        private static void ValidateZeroValues(int num1, int num2, int num3)
+        private static void ValidateZeroValues(int first, int second, int third)
         {
-            if (num1 == 0 && num2 == 0 && num3 == 0)
+            if (first == 0 && second == 0 && third == 0)
             {
                 throw new ArgumentException("All the values cannot be zero.");
             }

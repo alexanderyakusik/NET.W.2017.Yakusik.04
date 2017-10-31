@@ -12,16 +12,16 @@ namespace NumericUtils.UnitTests
         [TestCase(725418, 6126, ExpectedResult = 6)]
         [TestCase(-888888, 77274168, ExpectedResult = 24)]
         [TestCase(5641, 31820881, ExpectedResult = 5641)]
-        public int EuclidGCD_TwoCorrectValuesPassed_WorksCorrectly(int num1, int num2)
+        public int EuclidGCD_TwoCorrectValuesPassed_WorksCorrectly(int first, int second)
         {
-            return NumericUtils.EuclidGCD(num1, num2);
+            return NumericUtils.EuclidGCD(first, second);
         }
 
         public void EuclidGCD_TwoZeroesPassed_ArgumentExceptionThrown()
         {
-            int num1 = 0, num2 = 0;
+            int first = 0, second = 0;
 
-            Assert.Throws<ArgumentException>(() => NumericUtils.EuclidGCD(num1, num2));
+            Assert.Throws<ArgumentException>(() => NumericUtils.EuclidGCD(first, second));
         }
 
         [TestCase(0, 1, 2, ExpectedResult = 1)]
@@ -29,16 +29,16 @@ namespace NumericUtils.UnitTests
         [TestCase(6234262, 3453225, 234252, ExpectedResult = 1)]
         [TestCase(666, 888, 999, ExpectedResult = 111)]
         [TestCase(297388, -95956, -984196, ExpectedResult = 4)]
-        public int EuclidGCD_ThreeCorrectValuesPassed_WorksCorrectly(int num1, int num2, int num3)
+        public int EuclidGCD_ThreeCorrectValuesPassed_WorksCorrectly(int first, int second, int third)
         {
-            return NumericUtils.EuclidGCD(num1, num2, num3);
+            return NumericUtils.EuclidGCD(first, second, third);
         }
 
         public void EuclidGCD_ThreeZeroesPassed_ArgumentExceptionThrown()
         {
-            int num1 = 0, num2 = 0, num3 = 0;
+            int first = 0, second = 0, third = 0;
 
-            Assert.Throws<ArgumentException>(() => NumericUtils.EuclidGCD(num1, num2, num3));
+            Assert.Throws<ArgumentException>(() => NumericUtils.EuclidGCD(first, second, third));
         }
 
         [TestCase(0, 2, 4, 6, 100000, ExpectedResult = 2)]
@@ -71,16 +71,16 @@ namespace NumericUtils.UnitTests
         [TestCase(725418, 6126, ExpectedResult = 6)]
         [TestCase(-888888, 77274168, ExpectedResult = 24)]
         [TestCase(5641, 31820881, ExpectedResult = 5641)]
-        public int SteinGCD_TwoCorrectValuesPassed_WorksCorrectly(int num1, int num2)
+        public int SteinGCD_TwoCorrectValuesPassed_WorksCorrectly(int first, int second)
         {
-            return NumericUtils.SteinGCD(num1, num2);
+            return NumericUtils.SteinGCD(first, second);
         }
 
         public void SteinGCD_TwoZeroesPassed_ArgumentExceptionThrown()
         {
-            int num1 = 0, num2 = 0;
+            int first = 0, second = 0;
 
-            Assert.Throws<ArgumentException>(() => NumericUtils.SteinGCD(num1, num2));
+            Assert.Throws<ArgumentException>(() => NumericUtils.SteinGCD(first, second));
         }
 
         [TestCase(0, 1, 2, ExpectedResult = 1)]
@@ -88,16 +88,16 @@ namespace NumericUtils.UnitTests
         [TestCase(6234262, 3453225, 234252, ExpectedResult = 1)]
         [TestCase(666, 888, 999, ExpectedResult = 111)]
         [TestCase(297388, -95956, -984196, ExpectedResult = 4)]
-        public int SteinGCD_ThreeCorrectValuesPassed_WorksCorrectly(int num1, int num2, int num3)
+        public int SteinGCD_ThreeCorrectValuesPassed_WorksCorrectly(int first, int second, int third)
         {
-            return NumericUtils.SteinGCD(num1, num2, num3);
+            return NumericUtils.SteinGCD(first, second, third);
         }
 
         public void SteinGCD_ThreeZeroesPassed_ArgumentExceptionThrown()
         {
-            int num1 = 0, num2 = 0, num3 = 0;
+            int first = 0, second = 0, third = 0;
 
-            Assert.Throws<ArgumentException>(() => NumericUtils.SteinGCD(num1, num2, num3));
+            Assert.Throws<ArgumentException>(() => NumericUtils.SteinGCD(first, second, third));
         }
 
         [TestCase(0, 2, 4, 6, 100000, ExpectedResult = 2)]
