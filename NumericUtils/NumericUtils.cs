@@ -32,14 +32,7 @@ namespace NumericUtils
         /// <exception cref="ArgumentException">All the values are zero</exception>
         public static int EuclidGCD(int first, int second, out long methodExecutionMilliseconds)
         {
-            var stopwatch = new Stopwatch();
-            stopwatch.Start();
-            int result = EuclidGCD(first, second);
-            stopwatch.Stop();
-
-            methodExecutionMilliseconds = stopwatch.ElapsedMilliseconds;
-
-            return result;
+            return MeasureExecutionTime(() => EuclidGCD(first, second), out methodExecutionMilliseconds);
         }
 
         /// <summary>
@@ -70,14 +63,7 @@ namespace NumericUtils
         /// <exception cref="ArgumentException">All the values are zero</exception>
         public static int EuclidGCD(int first, int second, int third, out long methodExecutionMilliseconds)
         {
-            var stopwatch = new Stopwatch();
-            stopwatch.Start();
-            int result = EuclidGCD(first, second, third);
-            stopwatch.Stop();
-
-            methodExecutionMilliseconds = stopwatch.ElapsedMilliseconds;
-
-            return result;
+            return MeasureExecutionTime(() => EuclidGCD(first, second), out methodExecutionMilliseconds);
         }
 
         /// <summary>
@@ -107,14 +93,7 @@ namespace NumericUtils
         /// <exception cref="ArgumentException">Array contains less than two values</exception>
         public static int EuclidGCD(out long methodExecutionMilliseconds, params int[] numbers)
         {
-            var stopwatch = new Stopwatch();
-            stopwatch.Start();
-            int result = EuclidGCD(numbers);
-            stopwatch.Stop();
-
-            methodExecutionMilliseconds = stopwatch.ElapsedMilliseconds;
-
-            return result;
+            return MeasureExecutionTime(() => EuclidGCD(numbers), out methodExecutionMilliseconds);
         }
 
         /// <summary>
@@ -143,14 +122,7 @@ namespace NumericUtils
         /// <exception cref="ArgumentException">All the values are zero</exception>
         public static int SteinGCD(int first, int second, out long methodExecutionMilliseconds)
         {
-            var stopwatch = new Stopwatch();
-            stopwatch.Start();
-            int result = SteinGCD(first, second);
-            stopwatch.Stop();
-
-            methodExecutionMilliseconds = stopwatch.ElapsedMilliseconds;
-
-            return result;
+            return MeasureExecutionTime(() => SteinGCD(first, second), out methodExecutionMilliseconds);
         }
 
         /// <summary>
@@ -181,14 +153,7 @@ namespace NumericUtils
         /// <exception cref="ArgumentException">All the values are zero</exception>
         public static int SteinGCD(int first, int second, int third, out long methodExecutionMilliseconds)
         {
-            var stopwatch = new Stopwatch();
-            stopwatch.Start();
-            int result = SteinGCD(first, second, third);
-            stopwatch.Stop();
-
-            methodExecutionMilliseconds = stopwatch.ElapsedMilliseconds;
-
-            return result;
+            return MeasureExecutionTime(() => SteinGCD(first, second, third), out methodExecutionMilliseconds);
         }
 
         /// <summary>
@@ -218,14 +183,7 @@ namespace NumericUtils
         /// <exception cref="ArgumentException">Array contains less than two values</exception>
         public static int SteinGCD(out long methodExecutionMilliseconds, params int[] numbers)
         {
-            var stopwatch = new Stopwatch();
-            stopwatch.Start();
-            int result = SteinGCD(numbers);
-            stopwatch.Stop();
-
-            methodExecutionMilliseconds = stopwatch.ElapsedMilliseconds;
-
-            return result;
+            return MeasureExecutionTime(() => SteinGCD(numbers), out methodExecutionMilliseconds);
         }
 
         #region Private methods
@@ -333,6 +291,17 @@ namespace NumericUtils
             int temp = firstNumber;
             firstNumber = secondNumber;
             secondNumber = temp;
+        }
+
+        private static int MeasureExecutionTime(Func<int> func, out long elapsedMilliseconds)
+        {
+            Stopwatch sw = Stopwatch.StartNew();
+            int result = func();
+            sw.Stop();
+
+            elapsedMilliseconds = sw.ElapsedMilliseconds;
+
+            return result;
         }
 
         #endregion
